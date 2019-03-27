@@ -320,10 +320,10 @@
             <li class="dropdown dropdown-extended dropdown-status" id="header_status_bar">
                 <a href="javascript:;" ng-click="showTokenCountdown = !showTokenCountdown" class="dropdown-toggle">
                     <i class="icon fa fa-clock-o"></i>
-                    <timer class="agave-message" countdown="tokenCountdown" interval="1000" ng-show="showTokenCountdown">Token expires in {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}</timer> 
+                    <timer class="agave-message" countdown="tokenCountdown" interval="1000" ng-show="showTokenCountdown">Token expires in {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}</timer>
                 </a>
             </li>
-            <li class="dropdown dropdown-extended dropdown-status" id="header_status_bar">
+            <!--<li class="dropdown dropdown-extended dropdown-status" id="header_status_bar">
                 <a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
                     <i class="icon fa fa-sliders"></i>
                     <span ng-if="platformStatus.statusCode == 400" class="badge badge-warning"> {{ platformStatus.issues.length }} </span>
@@ -361,7 +361,7 @@
                     </li>
                 </ul>
 
-            </li>
+            </li>-->
             <!-- END TODO DROPDOWN -->
             <!-- BEGIN LANGUAGE BAR -->
             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -401,7 +401,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default">
                     <li class="tenant-badge">
-                        <a href="{{ tenant.contact.url || 'http://developer.agaveapi.co/' }}">
+
                                 <span class="logo">
                                     <img ng-src="../auth/img/tenants/{{tenant.code}}.png">
                                 </span>
@@ -409,12 +409,11 @@
                                     <!--{{ tenant.name }}-->
 
                                 <!--</span>-->
-                        </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#/profile/me/account">
                             <i class="icon-user"></i> My Profile </a>
-                    </li>
+                    </li>-->
                     <!--<li>-->
                         <!--<a href="#">-->
                             <!--<i class="icon-envelope-open"></i> My Inbox-->
@@ -451,11 +450,11 @@
             <!-- END USER LOGIN DROPDOWN -->
             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-            <li class="dropdown dropdown-quick-sidebar-toggler">
+            <!--<li class="dropdown dropdown-quick-sidebar-toggler">
                 <a href="javascript:;" class="dropdown-toggle">
                     <i class="icon-logout"></i>
                 </a>
-            </li>
+            </li>-->
             <!-- END QUICK SIDEBAR TOGGLER -->
         </ul>
     </div>
