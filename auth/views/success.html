@@ -6,11 +6,11 @@
     </div>
 
     <div ng-show="!requesting">
-      <div ng-if="loggedIn" class="lock-head"> Login Success </div>
+      <div ng-if="loggedIn" class="lock-head"> Login Success <br/> Please wait while you are redirected to your Dashboard... </div>
       <div class="lock-body">
           <div class="message"></div>
           <div class="lock-avatar-block">
-              <img ng-src="//www.gravatar.com/avatar/{{ profile.email | gravatar }}?d=mm" class="lock-avatar">
+              <img ng-src="http://www.gravatar.com/avatar/{{ profile.email | gravatar }}?d=mm" class="lock-avatar">
           </div>
 
           <form class="form-horizontal top-buffer">
@@ -39,7 +39,7 @@
       </div>
 
       <div class="lock-bottom top-buffer">
-          <a href="../app/" target="_blank">Go to your Dashboard</a>
+          <a href="/app/" target="_blank">Go to your Dashboard</a>
       </div>
     </div>
 

@@ -2,25 +2,21 @@ angular.module('AlertService', []).service('Alerts', ['$rootScope', function ($r
 
     this.success = function(options) {
         options.type = 'success';
-        options.icon = options.icon || 'check-circle';
         return this.alert(options);
     };
 
     this.danger = function(options) {
         options.type = 'danger';
-        options.icon = options.icon || 'exclamation-circle';
         return this.alert(options);
     };
 
     this.warning = function(options) {
         options.type = 'warning';
-        options.icon = options.icon || 'warning';
         return this.alert(options);
     };
 
     this.info = function(options) {
         options.type = 'info';
-        options.icon = options.icon || 'info-circle';
         return this.alert(options);
     };
 

@@ -4,16 +4,17 @@ angular.module('AgaveAuth').controller('LogoutController', function ($injector, 
     settings.layout.loginPage = false;
 
     //$scope.loggedIn = !!AccessToken.get();
-
+    $scope.page = true;
     $timeout(function() {
         $scope.profile = $localStorage.activeProfile;
         $scope.tenant = $localStorage.tenant;
 
-        // delete $localStorage.activeProfile;
-        // delete $localStorage.token;
+        delete $localStorage.activeProfile;
+        delete $localStorage.token;
+        angular.element('.loading-message').hide();
     }, 50);
 
-    $scope.$watch('$localStorage.activeProfile', function(value){
+    $scope.$watch('$localStorage.profile', function(value){
         $timeout(function () {
             $scope.profile = $localStorage.activeProfile;
         }, 0);
@@ -24,19 +25,4 @@ angular.module('AgaveAuth').controller('LogoutController', function ($injector, 
             $rootScope.$broadcast('oauth:template:update', '/auth/views/templates/oauth-ng-button.html');
         }, 0);
     }, true);
-
-    // show content on state change success
-    $scope.$on('$stateChangeSuccess', function () {
-        jQuery('.content.hide, .copyright.hide').removeClass('hide'); // show content area
-    });
-
-    // show content on state change success
-    $scope.$on('$stateChangeError', function () {
-        jQuery('.content.hide, .copyright.hide').removeClass('hide'); // show content area
-    });
-
-    // show content on state change success
-    $scope.$on('$stateNotFound', function () {
-        jQuery('.content.hide, .copyright.hide').removeClass('hide'); // show content area
-    });
 });

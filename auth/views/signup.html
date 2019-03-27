@@ -1,6 +1,6 @@
 <!-- BEGIN REGISTRATION FORM -->
 <form class="register-form" ng-submit="submitRegistration()" method="post">
-    <h3 class="font-green">Sign Up For A {{selectedTenant.name}} Account</h3>
+    <h3 class="font-green">Sign Up</h3>
     <p class="hint"> Enter your personal details below: </p>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">First Name</label>
@@ -12,13 +12,6 @@
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
         <label class="control-label visible-ie8 visible-ie9">Email</label>
         <input class="form-control placeholder-no-fix" ng-model="profile.email" type="text" placeholder="Email" name="email" /> </div>
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Title</label>
-        <input class="form-control placeholder-no-fix" ng-model="profile.title" type="text" placeholder="Title" name="title" /> </div>
-
-    <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Organization</label>
-        <input class="form-control placeholder-no-fix" ng-model="profile.organization" type="text" placeholder="Organization" name="organization" /> </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">Address</label>
         <input class="form-control placeholder-no-fix" ng-model="profile.street1" type="text" placeholder="Address" name="address" /> </div>
@@ -34,12 +27,9 @@
             </ui-select-choices>
         </ui-select></div>
     <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Postal Code</label>
-        <input class="form-control placeholder-no-fix" ng-model="profile.zipcode" type="text" placeholder="Postal Code" name="zipcode" /> </div>
-    <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">Country</label>
         <ui-select ng-model="person.country" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;" title="Select a state">
-            <ui-select-match placeholder="Select a country from the list or search by name...">{{$select.selected.name}}</ui-select-match>
+            <ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.name}}</ui-select-match>
             <ui-select-choices repeat="country.id as country in countries | propsFilter: {name: $select.search, id: $select.search}">
                 <div ng-bind-html="country.name | highlight: $select.search"></div>
             </ui-select-choices>
@@ -294,7 +284,7 @@
         <input class="form-control placeholder-no-fix" ng-model="profile.rpassword" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" /> </div>
     <div class="form-group margin-top-20 margin-bottom-20">
         <label class="check">
-            <input type="checkbox" ng-model=profile.tnc" name="tnc" /> I agree to the
+            <input type="checkbox" ng-model=profile.ntc" name="tnc" /> I agree to the
             <a href="javascript:;"> Terms of Service </a> &
             <a href="javascript:;"> Privacy Policy </a>
         </label>

@@ -1,33 +1,29 @@
 <div class="page-body">
-    <div class="lock-head"> Click to Complete Login</div>
-    <div class="lock-body">
-        <div class="message"></div>
-        <div class="lock-avatar-block text-center">
-            <oauth
-                    template="views/templates/oauth-ng-button.html"
-                    site="tenant.baseUrl"
-                    client-id="settings.oauth.clients[tenant.code].clientKey"
-                    redirect-uri="{{settings.oauth.clients[tenant.code].callbackUrl}}"
-                    authorize-path="/authorize",
-                    state="{{randomState()}}"
-                    scope="{{settings.oauth.clients[tenant.code].scope}}"
-                    tenant="tenant">
-            </oauth>
-        </div>
+    <div class="row" ng-show="requesting">
+      <div class="col-md-12">
+        <div class="loading-message"><div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
+      </div>
     </div>
-    <div class="lock-bottom">
-        <div class="row login-options">
-            <p class="col-xs-12 login-message">Or login with</p>
+    <div class="row" ng-show="!requesting"></div>
+        <div class="lock-head">UH HPC Gateway Login</div>
+        <div ng-controller="LoginController">
+          <form method="POST">
+              <div ng-show="login_error" uib-alert class="lock-body" ng-class="'alert-' + (alert.type || 'danger')">Incorrect Login Credentials or Permissions. Please Try Again.</div>
+              <div class="input-group  lock-body">
+                <label style="color:#fff;" for="username">Name: </label>
+                <input class='form-control placeholder-no-fix' id='username' type="text" ng-model="username" />
+              </div>
+              <div class="input-group lock-body">
+                <label style="color:#fff;" for="password" >Password: </label>
+                <input class='form-control placeholder-no-fix' type="password" id="password" ng-model="password" />
+              </div>
+             <div class="lock-bottom">
+                <input class="btn btn-default" type="submit" ng-click="getAuthToken()" value="Login" />
+             </div>
+          </form>
+             <center class="lock-bottom" ><h5>
+                 <a href="https://www.hawaii.edu/username/userprefs/password_only.cgi">Forgot Password</a>
+             </h5></center>
         </div>
-        <div class="row">
-          <ul class="list-inline">
-            <li ng-repeat="t in settings.tenants">
-              <a ui-sref="login({tenantId: t.code})"><img ng-src="img/tenants/{{t.code}}-icon.png" title="{{t.name}}" class="thumbnail"></a>
-            </li>
-          </ul>
-        </div>
-        <div class="row">
-          <a ui-sref="tenants" type="button" class="btn btn-default top-buffer">Back</a>
-        </div>
-    </div>
-</div>
+   </div>
+ </div>

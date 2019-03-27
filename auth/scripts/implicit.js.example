@@ -1,43 +1,28 @@
 // production
 var OAuthClients = {
-    "agave.prod": {
-        "clientKey": "S7vVnYUW1O2UNF5WqE4BahVfFJca",
-        "callbackUrl": "https://togo.agaveapi.co/auth/",
-        "scope": "PRODUCTION",
-        "projectUrl": "https://agaveapi.co/",
-        "supportUrl": "https://support.agaveapi.co",
-        "signupUrl": "https://public.agaveapi.co/create_account"
+    'public.prod': {
+        'clientKey': 'fasdfadsfasdfadfasdf',
+        'callbackUrl': 'https://togo.agaveapi.co/auth/',
+        'scope': 'PRODUCTION'
     },
-    "iplantc.org": {
-        "clientKey": "wertyerthdfgbwergwerg2345dfsgwer",
-        "callbackUrl": "https://togo.agaveapi.co/auth/",
-        "scope": "PRODUCTION",
-        "projectUrl": "https://cyverse.org/",
-        "supportUrl": "https://ask.cyverse.org/",
-        "signupUrl": "https://user.cyverse.org/register/"
+    'iplantc.org': {
+        'clientKey': 'wertyerthdfgbwergwerg2345dfsgwer',
+        'callbackUrl': 'https://togo.agaveapi.co/auth/',
+        'scope': 'PRODUCTION'
     },
-    "tacc.prod": {
-        "clientKey": "234t23wergwef_OUIYOIJwerfwer",
-        "callbackUrl": "https://togo.agaveapi.co/auth/",
-        "scope": "PRODUCTION",
-        "projectUrl": "https://tacc.utexas.edu/",
-        "supportUrl": "https://portal.tacc.utexas.edu/tacc-consulting",
-        "signupUrl": "https://portal.tacc.utexas.edu/account-request"
+    'tacc.prod': {
+        'clientKey': '234t23wergwef_OUIYOIJwerfwer',
+        'callbackUrl': 'https://togo.agaveapi.co/auth/',
+        'scope': 'PRODUCTION'
     },
-    "araport": {
-        "clientKey": "fwlifuyoqwieyfhd986987HKLHJLKJ",
-        "callbackUrl": "https://togo.agaveapi.co/auth/",
-        "scope": "PRODUCTION",
-        "projectUrl": "https://www.araport.org",
-        "supportUrl": "https://www.araport.org/contact",
-        "signupUrl": "https://www.araport.org/user/register"
+    'araport': {
+        'clientKey': 'fwlifuyoqwieyfhd986987HKLHJLKJ',
+        'callbackUrl': 'https://togo.agaveapi.co/auth/',
+        'scope': 'PRODUCTION'
     },
-    "designsafe": {
-        "clientKey": "IOUYWOEIR09780870_asdfAFASDasdfj",
-        "callbackUrl": "https://togo.agaveapi.co/auth/",
-        "scope": "PRODUCTION",
-        "projectUrl": "https://designsafe-ci.org/",
-        "supportUrl": "https://www.designsafe-ci.org/help/new-ticket/",
-        "signupUrl": "https://www.designsafe-ci.org/account/register/"
+    'designsafe': {
+        'clientKey': 'IOUYWOEIR09780870_asdfAFASDasdfj',
+        'callbackUrl': 'https://togo.agaveapi.co/auth/',
+        'scope': 'PRODUCTION'
     }
 };

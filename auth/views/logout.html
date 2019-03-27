@@ -1,42 +1,13 @@
 <div class="page-body text-center">
-    <div class="lock-head"> Session Expired</div>
+    <div class="lock-head"> You Are Logged Out</div>
     <div class="lock-body">
         <div class="message"></div>
-        <div class="lock-avatar-block">
-            <img ng-src="http://www.gravatar.com/avatar/{{ profile.email | gravatar }}?d=mm" class="lock-avatar">
-        </div>
 
         <form class="form-horizontal expired">
-            <h4>{{profile.firstName + ' ' + profile.lastName}}</h4>
-            <div class="form-group">
-                <div class="coming-soon-countdown">
-                    <div id="tokenCountdown" class="hasCountdown">
-                        <span class="countdown_row countdown_show4">
-                            <span class="countdown_section">
-                                <span class="countdown_amount">0</span>
-                                <br>Days
-                            </span>
-                           <span class="countdown_section">
-                                <span class="countdown_amount">0</span>
-                                <br>Hrs
-                            </span>
-                            <span class="countdown_section">
-                                <span class="countdown_amount">0</span>
-                                <br>Mins
-                            </span>
-                            <span class="countdown_section">
-                                <span class="countdown_amount">0</span>
-                                <br>Secs
-                            </span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <h3 class="lock-head">
+                <a href="/auth">Goto Login Page</a>
+            </h3
+            <br/><br/>
         </form>
-    </div>
-    <div class="lock-bottom">
-        <div class="row text-center">
-          <a ui-sref="tenants" type="button" class="btn green-sharp btn-outline">Back to Login Options</a>
-        </div>
     </div>
 </div>

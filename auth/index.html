@@ -3,144 +3,130 @@
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" data-ng-app="AgaveAuth">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 
-    <head>
-        <meta charset="utf-8" />
-        <title data-ng-bind="'Agave ToGo | ' + $state.current.data.pageTitle"></title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />-->
-        <!--<link href="../bower_components/googlefonts/css/style.css" rel="stylesheet" type="text/css" />-->
-        <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="../bower_components/agave-fonticons/style.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-        <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-        <link href="../bower_components/angular-ui-select/dist/select.min.css" rel="stylesheet" type="text/css" />
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
-        <link id="ng_load_plugins_before" />
-        <!-- END DYMANICLY LOADED CSS FILES -->
-        <!-- BEGIN THEME GLOBAL STYLES -->
+<head>
+    <meta charset="utf-8" />
+    <title data-ng-bind="'`UH HPC Gateway` | ' + $state.current.data.pageTitle"></title>
+    <base href="/auth/"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />-->
+    <!-- <link href="../bower_components/googlefonts/css/style.css" rel="stylesheet" type="text/css" /> -->
+    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/bower_components/agave-fonticons/style.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="../bower_components/angular-ui-select/dist/select.min.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+    <link id="ng_load_plugins_before" />
+    <!-- END DYMANICLY LOADED CSS FILES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="/assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="/auth/css/tenants.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="/auth/favicon.ico" /> </head>
+<!-- END HEAD -->
 
-        <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
-        <!-- END THEME GLOBAL STYLES -->
-        <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="../assets/pages/css/login.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/login.css" rel="stylesheet" type="text/css" />
-        <!--<link href="../assets/layouts/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color" />-->
-        <link href="../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
-
-        <!-- END PAGE LEVEL STYLES -->
-        <!-- BEGIN THEME LAYOUT STYLES -->
-        <!--<link href="css/tenants.css" rel="stylesheet" type="text/css" />-->
-        <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
-    <!-- END HEAD -->
-
-    <body class="login page-on-load">
-        <!--<div class="menu-toggler sidebar-toggler"></div>-->
-        <div ng-spinner-bar class="page-spinner-bar">
+<body class="page-on-load" ng-class="{'login': settings.layout.loginPage, 'lock-page': settings.layout.tenantPage}"
+    style="">
+    <!--background="/auth/img/EPSCoRStateConference2018.jpg">-->
+    <!-- <div ng-spinner-bar class="page-spinner-bar">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
             <div class="bounce3"></div>
-        </div>
-        <!-- BEGIN ACTUAL CONTENT -->
-        <!--<div class="page-lock">-->
-            <!--<div class="page-logo">-->
-                <!--<a class="brand" ui-sref="tenants()">-->
-                    <!--<img src="../assets/pages/img/logo-big.png" alt="logo" />-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--<div ui-view class="page-body fade-in-up"></div>-->
-        <!--</div>-->
+        </div> -->
+    <!-- BEGIN ACTUAL CONTENT -->
+    <div class="page-lock">
+        <div class="page-logo">
 
-        <div class="logo">
-            <a href="index.html">
-                <img src="../assets/pages/img/logo-big.png" alt="" />
-            </a>
         </div>
-        <!-- END LOGO -->
-        <!-- BEGIN LOGIN -->
-        <div ui-view id="ui-content" class="content hide"></div>
-        <!-- END LOGIN -->
 
-        <div class="copyright hide">
-            <a href="https://agaveapi.co/">2017 © The Agave Platform<span class="icon-agave"></span></a>
-        </div>
-        <!-- END ACTUAL CONTENT -->
-
-        <!--[if lt IE 9]>
-        <script src="../assets/global/plugins/respond.min.js"></script>
-        <script src="../assets/global/plugins/excanvas.min.js"></script>
+        <div ui-view class="page-body fade-in-up"></div>
+    </div>
+    <!-- END ACTUAL CONTENT -->
+    <div class="page-footer-custom-login">
+        <a href="http://hawaii.edu/its/ci">2018 ©UH HPC Gateway </a>
+    </div>
+    <!--[if lt IE 9]>
+        <script src="/assets/global/plugins/respond.min.js"></script>
+        <script src="/assets/global/plugins/excanvas.min.js"></script>
         <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
-        <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <script src="../bower_components/underscore/underscore-min.js" type="text/javascript"></script>
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
 
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN CORE ANGULARJS PLUGINS -->
+    <script src="/bower_components/angular/angular.js" type="text/javascript"></script>
+    <!--<script src="/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>-->
+    <!--<script src="/bower_components/stop-angular-overrides/stop-angular-overrides.js"></script>-->
+    <script src="/assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/angularjs/angular-cookies.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
 
-        <!-- BEGIN CORE ANGULARJS PLUGINS -->
-        <script src="../bower_components/angular/angular.js" type="text/javascript"></script>
-        <!--<script src="/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>-->
-        <!--<script src="/bower_components/stop-angular-overrides/stop-angular-overrides.js"></script>-->
-        <script src="../assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/angularjs/angular-cookies.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
-        <script src="../bower_components/angular-cache/dist/angular-cache.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="/bower_components/oauth-ng/dist/oauth-ng.js" type="text/javascript"></script>
+    <script src="/bower_components/ngstorage/ngStorage.min.js" type="text/javascript"></script>
+    <script src="/bower_components/angular-md5/angular-md5.min.js" type="text/javascript"></script>
+    <script src="/bower_components/moment/min/moment-with-locales.min.js" type="text/javascript"></script>
+    <script src="/bower_components/angular-moment/angular-moment.min.js" type="text/javascript"></script>
+    <script src='/bower_components/angular-ui-select/dist/select.js' type="text/javascript" ></script>
 
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Configuration.js" type="text/javascript"></script>
+    <script src="/bower_components/agave-angularjs-sdk/Agave/APIHelper.js" type="text/javascript"></script>
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Http/Client/HttpContext.js" type="text/javascript"></script>
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Http/Client/RequestClient.js" type="text/javascript"></script>
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Http/Request/HttpRequest.js" type="text/javascript"></script>
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Http/Response/HttpResponse.js" type="text/javascript"></script>
 
-        <script src="../assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
-        <script src="../bower_components/oauth-ng/dist/oauth-ng.js" type="text/javascript"></script>
-        <script src="../bower_components/ngstorage/ngStorage.min.js" type="text/javascript"></script>
-        <script src="../bower_components/angular-md5/angular-md5.min.js" type="text/javascript"></script>
-        <script src="../bower_components/moment/min/moment-with-locales.min.js" type="text/javascript"></script>
-        <script src="../bower_components/angular-moment/angular-moment.min.js" type="text/javascript"></script>
-        <script src='../bower_components/angular-ui-select/dist/select.js' type="text/javascript" ></script>
+    <!-- API Controllers -->
+    <!--<script src="/bower_components/agave-angularjs-sdk/Agave/Controllers/ClientsController.js" type="text/javascript"></script>-->
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Controllers/TenantsController.js" type="text/javascript"></script>
+    <script src="/bower_components/agave-angularjs-sdk/Agave/Controllers/ProfilesController.js" type="text/javascript"></script>
+    <script src="/auth/scripts/services/Commons.js" type="text/javascript"></script>
+    <script src="/auth/scripts/services/Alerts.js" type="text/javascript"></script>
 
-        <script src="../bower_components/agave-angularjs-sdk/agave-angularjs-sdk.min.js" type="text/javascript"></script>
-
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="scripts/implicit.js" type="text/javascript"></script>
-        <script src="scripts/main.js" type="text/javascript"></script>
-
-        <script src="scripts/services/Alerts.js" type="text/javascript"></script>
-        <script src="scripts/services/Commons.js" type="text/javascript"></script>
-        <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <script src="../bower_components/ng-file-upload/ng-file-upload-all.min.js" type="text/javascript"></script>
-
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="scripts/filters/filters.js" type="text/javascript"></script>
-        <script src="scripts/directives/directives.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <!-- END THEME LAYOUT SCRIPTS -->
-    </body>
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <!--<script src="/auth/scripts/implicit.js" type="text/javascript"></script>-->
+    <script src="/auth/scripts/main.js" type="text/javascript"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <link href="../assets/layouts/layout/css/themes/light2.css" rel="stylesheet" type="text/css" id="style_color" />
+    
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="/auth/scripts/filters/filters.js" type="text/javascript"></script>
+    <script src="/auth/scripts/directives/directives.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <!-- END THEME LAYOUT SCRIPTS -->
+</body>
 
 </html>

@@ -1,120 +1,53 @@
-<div class="lock-head"> Agave Platform</div>
+<div class="lock-head"> IKE Platform Login </div>
 <div>
-  <form class="container-fluid form-horizontal">
-    <uib-tabset active="active" justified="true" class="lock-tabset">
-      <uib-tab index="0">
-        <uib-tab-heading>
-          Sign In
-        </uib-tab-heading>
+  <form class="form-horizontal" ng-submit="loadTenant()">
+      <div class="form-group text-center">
         <div class="row">
-            <div class="form-group text-center">
-              <div class="row">
-                <div class="col-xs-12 vcenter text-center">
-                    <div>
-                      <img ng-show="!displayTenant" ng-src="img/tenants/agave.prod-thumb.png" class="lock-avatar">
-                      <img ng-show="displayTenant" ng-src="img/tenants/{{displayTenant.code}}-thumb.png" class="lock-avatar">
-                    </div>
-                </div>
+          <div class="col-sm-12 vcenter text-center">
+              <div>
+                <img ng-show="!displayTenant" src="/auth/img/tenants/agave.prod-thumb.png" class="lock-avatar">
+                <img ng-show="displayTenant" ng-src="/auth/img/tenants/{{displayTenant.code}}-thumb.png" class="lock-avatar">
               </div>
-              <div class="row">
-                <div class="col-xs-8 vcenter">
-                  <div class="input-group text-center">
-                    <ui-select allow-clear ng-model="displayTenant" on-select="updateTenant($item, $model)" theme="bootstrap" ng-disabled="disabled" title="Select a tenant">
-                      <ui-select-match placeholder="Select your organization...">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="item.name as item in settings.tenants | filter: $select.search">
-                      <div class="select2-result-repository clearfix">
-                        <div class="select2-result-repository__avatar"><img ng-src="img/tenants/{{item.code}}-thumb.png" /></div>
-                        <div class="select2-result-repository__meta">
-                          <div class="select2-result-repository__title" ng-bind-html="item.name | highlight: $select.search"> {{item.name}}</div>
-                          <div class="select2-result-repository__statistics">
-                            <div ng-if="item.projectUrl" class="select2-result-repository__forks">
-                              <a href="{{item.projectUrl}}">
-                                <span class="fa fa-globe"></span> website
-                              </a>
-                            </div>
-                            <div ng-if="item.projectUrl" class="select2-result-repository__forks">
-                              <a href="{{item.supportUrl}}">
-                                <span class="fa fa-support"></span> support
-                              </a>
-                            </div>
-                          </div>
-                        </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-10 vcenter text-center">
+            <div class="input-group">
+              <ui-select allow-clear ng-model="tenantSelected" on-select="updateTenant($item, $model)" theme="bootstrap" ng-disabled="disabled" title="Select a tenant">
+                <ui-select-match placeholder="Select your organization...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="item.name as item in settings.tenants | filter: { name: $select.search, code: $select.search}">
+                <div class="select2-result-repository clearfix">
+                  <div class="select2-result-repository__avatar"><img ng-src="/auth/img/tenants/{{item.code}}-thumb.png" /></div>
+                  <div class="select2-result-repository__meta">
+                    <div class="select2-result-repository__title" ng-bind-html="item.name | highlight: $select.search"> {{item.name}}</div>
+                    <div class="select2-result-repository__statistics">
+                      <div ng-if="item.projectUrl" class="select2-result-repository__forks">
+                        <a href="{{item.projectUrl}}">
+                          <span class="fa fa-globe"></span> website
+                        </a>
                       </div>
-                      </ui-select-choices>
-                    </ui-select>
-                    <span class="input-group-btn">
-                      <oauth
-                              template="views/templates/oauth-ng-button.html"
-                              site="tenant.baseUrl"
-                              client-id="settings.oauth.clients[tenant.code].clientKey"
-                              redirect-uri="{{settings.oauth.clients[tenant.code].callbackUrl}}"
-                              authorize-path="/authorize",
-                              state="{{randomState()}}"
-                              scope="{{settings.oauth.clients[tenant.code].scope}}"
-                              tenant="tenant">
-                      </oauth>
-                    </span>
+                      <div ng-if="item.projectUrl" class="select2-result-repository__forks">
+                        <a href="{{item.projectUrl}}">
+                          <span class="fa fa-support"></span> website
+                        </a>
+                      </div>
+                      <div class="select2-result-repository__watchers">
+                        <span class="fa fa-globe"></span> {{ item.code | tenantWebsite:item.baseUrl }}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+                </ui-select-choices>
+              </ui-select>
+              <span class="input-group-btn">
+                <button type="submit" class="btn red uppercase">Login</button>
+              </span>
             </div>
+          </div>
         </div>
-
-      </uib-tab>
-      <uib-tab index="1">
-        <uib-tab-heading>
-          Create Account
-        </uib-tab-heading>
-
-        <div class="row">
-            <div class="form-group text-center">
-              <div class="row">
-                <div class="col-xs-12 vcenter text-center">
-                    <div>
-                      <img ng-show="!displayTenant" src="/auth/img/tenants/agave.prod-thumb.png" class="lock-avatar">
-                      <img ng-show="displayTenant" ng-src="/auth/img/tenants/{{displayTenant.code}}-thumb.png" class="lock-avatar">
-                    </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-8 vcenter">
-                  <div class="input-group text-center">
-                    <ui-select allow-clear ng-model="$root.tenantSelected" on-select="updateTenant($item, $model)" theme="bootstrap" ng-disabled="disabled">
-                      <ui-select-match placeholder="Select your organization...">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="item.name as item in settings.tenants | filter: $select.search">
-                      <div class="select2-result-repository clearfix">
-                        <div class="select2-result-repository__avatar"><img ng-src="/auth/img/tenants/{{item.code}}-thumb.png" /></div>
-                        <div class="select2-result-repository__meta">
-                          <div class="select2-result-repository__title" ng-bind-html="item.name | highlight: $select.search"> {{item.name}}</div>
-                          <div class="select2-result-repository__statistics">
-                            <div ng-if="item.projectUrl" class="select2-result-repository__forks">
-                              <a href="{{item.projectUrl}}" target="_blank">
-                                <span class="fa fa-globe"></span> website
-                              </a>
-                            </div>
-                            <div ng-if="item.projectUrl" class="select2-result-repository__forks">
-                              <a href="{{item.supportUrl}}" target="_blank">
-                                <span class="fa fa-support"></span> support
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      </ui-select-choices>
-                    </ui-select>
-                    <span class="input-group-btn">
-                      <a href="{{displayTenant.signupUrl}}" target="_blank" class="signup btn red uppercase">Create</a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-      </uib-tab>
-
-    </uib-tabset>
+      </div>
   </form>
 </div>
 <div class="lock-bottom">
-  <a href="{{displayTenant.signupUrl}}" target="_blank">Don't have a {{tenant.name}} account?</a>
+<!--  <a href="/auth/register" target="_blank">Don't have a tenant?</a> -->
 </div>

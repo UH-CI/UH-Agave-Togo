@@ -1,12 +1,12 @@
-angular.module('AgaveAuth').controller('LoginController', function ($injector, $timeout, $rootScope, $scope, $state, $stateParams, settings, $localStorage, AccessToken, TenantsController, Commons, Alerts) {
+angular.module('AgaveAuth').controller('LoginController', function ($injector, $timeout, $http, $location, $rootScope, $scope, $state, $stateParams, settings, $localStorage, AccessToken, TenantsController, Commons, Alerts) {
 
     settings.layout.tenantPage = true;
     settings.layout.loginPage = false;
     $scope.useImplicit = true;
     $scope.randomState = function() {
         return (Math.ceil(Math.random() * 9));
-    };
-
+    }
+    $scope.alerts=[]
     $scope.user = ($localStorage.client && angular.copy($localStorage.client)) || {
             username: '',
             password: '',
@@ -14,12 +14,12 @@ angular.module('AgaveAuth').controller('LoginController', function ($injector, $
             client_secret: '',
             remember: 0
     };
-
-    if ($stateParams.tenantId) {
+    $scope.tenantId = 'hawaii'
+    /*if ($stateParams.tenantId) {
         $scope.tenantId = $stateParams.tenantId;
     } else {
         $state.go('tenants');
-    }
+    }*/
 
     $scope.getTenantByCode = function (tenantId) {
         var namedTenant = false;
@@ -36,6 +36,36 @@ angular.module('AgaveAuth').controller('LoginController', function ($injector, $
             Alerts.danger({message: 'No tenant found matching ' + tenantId});
         }
     };
+    $scope.requesting =false;
+    $scope.getAuthToken = function(){
+        $scope.requesting = true;
+        var post_data = {};
+        var url = 'https://ikewai-dev.its.hawaii.edu:8000/login';
+        var options = {
+            withCredentials: true, 
+            headers:{ 'Authorization':  'Basic ' + btoa($scope.username + ":" + $scope.password)}
+          }
+        $http.post(url,post_data, options)
+            .success(function (data, status, headers, config) {
+                $scope.requesting=false;
+                if (data.access_token){
+                    $localStorage.token = data;
+                    d = new Date();
+                    $localStorage.token.expires_at = moment(d).add($localStorage.token.expires_in, 's').toDate();
+                    $localStorage.tenant = {"id":"0001411570998814-b0b0b0bb0b-0001-016","name":"Hawaii Tenant","baseUrl":"https://agaveauth.its.hawaii.edu/","code":"hawaii","contact":[{"name":"Sean Cleveland","email":"seanbc@uhawaii.edu","url":"","type":"admin","primary":true}],"_links":{"self":{"href":"https://docker.example.com/tenants/v2/hawaii"},"publickey":{"href":"https://agaveauth.its.hawaii.edu/apim/v2/publickey"}}};
+                    $location.path("/success");
+                }
+                else{
+                    $scope.login_error=true;
+                }
+            })
+            .error(function (data, status, header, config) {
+                $scope.requesting=false;
+                Alerts.danger({message:angular.toJson(data)});
+            });
+            
+    }
+
 
 
     var updateCurrentTenant = function () {
@@ -82,11 +112,11 @@ angular.module('AgaveAuth').controller('LoginController', function ($injector, $
                 $localStorage.token = response;
                 $localStorage.client = $scope.user;
                 $localStorage.tenant = $scope.tenant;
-                $rootScope.$broadcast('oauth:login', token);
+                $rootScope.broadcast('oauth:login', token);
                 return response;
             },
             function(response) {
-                $rootScope.$broadcast('oauth:denied');
+                $rootScope.broadcast('oauth:denied');
             });
     }
 
@@ -119,13 +149,20 @@ angular.module('AgaveAuth').controller('LoginController', function ($injector, $
         return $http.post($scope.tenant.baseUrl + '/token', data, options).then(
             function (response) {
                 $localStorage.token = response;
-                $rootScope.$broadcast('oauth:refresh', token);
+                $rootScope.broadcast('oauth:refresh', token);
                 $localStorage.tenant = $scope.tenant;
                 return response;
             },
             function(response) {
-                $rootScope.$broadcast('oauth:denied');
+                $rootScope.broadcast('oauth:denied');
             });
     };
-
+//forward user onto the oauth login page
+/*$scope.$on('oauth:loggedOut', function(event) {
+  //console.log('The user is not signed in');
+  $timeout(function() {
+    angular.element('a.btn.default.logged-out.ng-scope').trigger('click');
+  });
+});
+*/
 });

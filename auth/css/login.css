@@ -185,28 +185,6 @@ Login page
   color: #7a8ca5;
   font-size: 13px; }
 
-.login .content .login-form h3.form-title {
-  line-height:35px;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: right;
-  width: calc(98% - 75px);
-}
-.login .content .login-form h3.form-title span.subtitle {
-  display: block;
-}
-.login .content .login-form img.tenant-avatar {
-  width: 75px;
-  height: 75px;
-  display: inline-block;
-}
-
-.social-icons .tenant-icon {
-  width:28px;
-  height:28px;
-  display:block;
-}
-
 @media (max-width: 440px) {
   /***
   Login page
