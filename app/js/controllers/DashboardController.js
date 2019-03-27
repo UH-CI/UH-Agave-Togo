@@ -196,7 +196,7 @@ angular.module('AgaveToGo').controller('DashboardController',
               $scope.jobCount = 0;
           });
 
-    JobsController.listJobs(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'FINISHED', null, null).then(
+    JobsController.listJobs(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null).then(
         function (data) {
           $timeout(function () {
               $scope.jobListing = data.result;

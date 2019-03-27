@@ -14,6 +14,7 @@
 <h3 class="page-title"> Dashboard </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN MAIN CONTENT -->
+<h3>UH Agave Togo</h3>
 <div ng-controller="DashboardController">
     <div class="note note-info" remember-dismiss preference-key="'alerts.dashboard.welcome'" >
         <h3>Introducing the new Agave ToGo!
@@ -43,20 +44,6 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard-stat red">
-                <div class="visual">
-                    <i class="fa fa-exchange"></i>
-                </div>
-                <div class="details">
-                    <div class="number"> 12,5TB </div>
-                    <div class="desc"> Data Moved </div>
-                </div>
-                <a class="more" href="#/transfers"> View more
-                    <i class="m-icon-swapright m-icon-white"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard-stat green">
                 <div class="visual">
                     <i class="fa fa-code"></i>
@@ -70,23 +57,93 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard-stat purple">
-                <div class="visual">
-                    <i class="fa fa-globe"></i>
-                </div>
-                <div class="details">
-                    <div class="number"> +25% </div>
-                    <div class="desc"> Activity Increase </div>
-                </div>
-                <a class="more" href="#/usage"> View more
-                    <i class="m-icon-swapright m-icon-white"></i>
-                </a>
-            </div>
-        </div>
+
     </div>
     <!-- END DASHBOARD STATS -->
     <div class="row">
+
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered">
+                <div class="portlet-title tabbable-line">
+                    <div class="caption caption-md">
+                        <i class="icon-globe font-green hide"></i>
+                        <span class="caption-subject font-green bold uppercase">Activity Feeds</span>
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#" data-target="#tab_1_1" data-toggle="tab"> Jobs </a>
+                        </li>
+                        <li>
+                            <a href="#" data-target="#tab_1_2" data-toggle="tab"> Systems </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="portlet-body">
+                    <!--BEGIN TABS-->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1_1">
+                            <div class="scroller" style="height: 306px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                <ul class="feeds">
+                                    <li ng-repeat="job in jobListing track by $index">
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-success">
+                                                        <i class="fa fa-{{ job.status | jobStatusIcon }}"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> {{ job.name | excerpt }} | {{job.status}}
+                                                        <span  class="label label-sm label-info">
+                                                            <a ui-sref="jobs({id: job.id})">
+                                                                View details
+                                                                <i class="fa fa-share"></i>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date" am-time-ago="job.created"></div>
+                                        </div>
+				                            </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_1_2">
+                            <div class="scroller" style="height: 306px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                <ul class="feeds">
+                                    <li ng-repeat="system in systems">
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-success">
+                                                        <i class="fa {{ system | systemStatusIcon }}"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> {{ system.name | excerpt }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date" am-time-ago="system.created"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--END TABS-->
+                </div>
+            </div>
+
+            <!-- END PORTLET-->
+        </div>
         <div class="col-md-6 col-sm-6">
             <!-- BEGIN REGIONAL STATS PORTLET-->
             <div class="portlet light bordered ">
@@ -150,114 +207,6 @@
                 </div>
             </div>
             <!-- END REGIONAL STATS PORTLET-->
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <!-- BEGIN PORTLET-->
-            <div class="portlet light bordered">
-                <div class="portlet-title tabbable-line">
-                    <div class="caption caption-md">
-                        <i class="icon-globe font-green hide"></i>
-                        <span class="caption-subject font-green bold uppercase">Activity Feeds</span>
-                    </div>
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#" data-target="#tab_1_1" data-toggle="tab"> Jobs </a>
-                        </li>
-                        <li>
-                            <a href="#" data-target="#tab_1_2" data-toggle="tab"> Systems </a>
-                        </li>
-                        <li>
-                            <a href="#" data-target="#tab_1_3" data-toggle="tab"> Users </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="portlet-body">
-                    <!--BEGIN TABS-->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1_1">
-                            <div class="scroller" style="height: 306px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
-                                <ul class="feeds">
-                                    <li ng-repeat="job in jobListing track by $index">
-                                        <div class="col1">
-                                            <div class="cont">
-                                                <div class="cont-col1">
-                                                    <div class="label label-sm label-success">
-                                                        <i class="fa fa-{{ job.status | jobStatusIcon }}"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="cont-col2">
-                                                    <div class="desc"> {{ job.name | excerpt }}
-                                                        <span ng-if="job.status === 'FINISHED'" class="label label-sm label-info">
-                                                            <a ui-sref="jobs({id: job.id})">
-                                                                View output
-                                                                <i class="fa fa-share"></i>
-                                                            </a>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col2">
-                                            <div class="date" am-time-ago="job.created"></div>
-                                        </div>
-				                            </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_1_2">
-                            <div class="scroller" style="height: 306px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
-                                <ul class="feeds">
-                                    <li ng-repeat="system in systems">
-                                        <div class="col1">
-                                            <div class="cont">
-                                                <div class="cont-col1">
-                                                    <div class="label label-sm label-success">
-                                                        <i class="fa {{ system | systemStatusIcon }}"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="cont-col2">
-                                                    <div class="desc"> {{ system.name | excerpt }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col2">
-                                            <div class="date" am-time-ago="system.created"></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_1_3">
-                            <div class="scroller" style="height: 337px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
-                                <ul class="feeds">
-                                    <li ng-repeat="fakeUser in fakeUsers">
-                                        <a ui-sref="#/profiles/{{fakeUser.username}}">
-                                            <div class="col1">
-                                                <div class="cont">
-                                                    <div class="cont-col1">
-                                                        <div class="label label-sm label-success">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cont-col2">
-                                                        <div class="desc"> New user {{ fakeUser.name }} registered </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col2">
-                                                <div class="date" am-time-ago="fakeUser.created"></div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!--END TABS-->
-                </div>
-            </div>
-            <!-- END PORTLET-->
         </div>
     </div>
 </div>
