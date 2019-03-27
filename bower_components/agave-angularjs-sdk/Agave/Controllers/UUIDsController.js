@@ -1,5 +1,5 @@
 'use strict';
-angular.module('agave.sdk').factory('UUIDsController', ['$q', 'Configuration', 'HttpClient', 'APIHelper', function ($q, Configuration, HttpClient, APIHelper) {
+angular.module('AgavePlatformScienceAPILib').factory('UUIDsController', ['$q', 'Configuration', 'HttpClient', 'APIHelper', function ($q, Configuration, HttpClient, APIHelper) {
   return {
       /**
        * get UUID

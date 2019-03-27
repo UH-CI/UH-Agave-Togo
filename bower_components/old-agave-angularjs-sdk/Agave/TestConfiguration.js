@@ -1,0 +1,1 @@
+'use strict';angular.module('agave.sdk').factory('TestConfiguration', function () {    var Configuration = {};    Configuration.BASEURI = 'https://api.araport.org/';    Configuration.oAuthAccessToken = '';    return Configuration;});

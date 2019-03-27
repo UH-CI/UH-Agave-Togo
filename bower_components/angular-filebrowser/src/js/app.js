@@ -18,7 +18,7 @@
       'ui.router',
       'ngSanitize',
       'ngStorage',
-      'agave.sdk',
+      'AgavePlatformScienceAPILib',
       'ngclipboard',
     ]);
 

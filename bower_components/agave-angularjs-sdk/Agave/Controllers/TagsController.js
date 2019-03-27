@@ -1,5 +1,5 @@
 'use strict';
-angular.module('agave.sdk').factory('TagsController', ['$q', 'Configuration', 'HttpClient', 'APIHelper', function ($q, Configuration, HttpClient, APIHelper) {
+angular.module('AgavePlatformScienceAPILib').factory('TagsController', ['$q', 'Configuration', 'HttpClient', 'APIHelper', function ($q, Configuration, HttpClient, APIHelper) {
   return {
       /**
        * List tags
