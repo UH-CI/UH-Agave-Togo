@@ -2,10 +2,10 @@ angular.module('AgaveAuth').controller('TenantSelectionController', function ($i
 
     settings.layout.tenantPage = false;
     settings.layout.loginPage = true;
-    
+
     $scope.tenant = {selected: "hawaii", code: "hawaii", name: "UH Agave Platform"};
     $scope.tenants = ["hawaii"];
-    $scope.displayTenant = {"id":"0001411570998814-b0b0b0bb0b-0001-016","name":"Hawaii Tenant","baseUrl":"https://agaveauth.its.hawaii.edu/","code":"hawaii","contact":[{"name":"Sean Cleveland","email":"seanbc@uhawaii.edu","url":"","type":"admin","primary":true}],"_links":{"self":{"href":"https://docker.example.com/tenants/v2/hawaii"},"publickey":{"href":"https://agaveauth.its.hawaii.edu/apim/v2/publickey"}}};
+    $scope.displayTenant = {"id":"0001411570998814-b0b0b0bb0b-0001-017","name":"University of Hawaii Tenant","baseUrl":"https://uhhpctenant.its.hawaii.edu/","code":"hawaii","contact":[{"name":"Sean Cleveland","email":"seanbc@uhawaii.edu","url":"","type":"admin","primary":true}],"_links":{"self":{"href":"https://docker.example.com/tenants/v2/hawaii"},"publickey":{"href":"https://uhhpctenant.its.hawaii.edu/apim/v2/publickey"}}};
 
 
     //TenantsController.listTenants().then(
