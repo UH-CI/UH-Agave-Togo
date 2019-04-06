@@ -1,1 +1,153 @@
-<div class="page-bar">    <ul class="page-breadcrumb">        <li>            <a href="#/dashboard.html">Home</a>            <i class="fa fa-circle"></i>        </li>        <li>            <a href="#/apps">Apps</a>        </li>    </ul>    <div landing-start-menu></div></div><h3 class="page-title"> Apps Management    <small>Manage your collection of apps</small></h3><div class="row">    <div class="col-md-12">        <div class="portlet light portlet-fit portlet-datatable bordered">            <div class="portlet-title" ng-show="!requesting">                <div class="caption">                    <i class="fa fa-code"></i> Apps Management                </div>                <div class="row text-center">                  <div class="col-md-12">                    <a href="#/apps/new" class="btn btn-outline green pull-right" data-target="#add-edit-modal" role="button" data-toggle="modal">                      <i class="fa fa-plus"></i>                      <span class="hidden-480"> New App</span>                    </a>                  </div>                </div>                <div ng-controller="QueryBuilderCtrl" class="text-center top-buffer" ng-keyup="$event.keyCode == 13 ? searchTools(query) : null">                    <div class="btn-group">                      <div class="input-group">                        <div class="input-group-addon"><i class="fa fa-filter" aria-hidden="true"></i></div>                        <input type="text" class="form-control" placeholder="Filter" ng-model="$parent.filter">                      </div>                    </div>                    <div class="row top-buffer" ng-show="showSearch">                      <query-builder group="filter.group" resource="apps"></query-builder>                      <div class="col-md-12 top-buffer">                        <div class="input-group">                          <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>                          <input type="text" class="form-control" placeholder="Search" ng-model="query">                        </div>                        <div class="btn-group">                          <button class="btn btn-success top-buffer" ng-click="searchTools(query)">Search</button>                        </div>                      </div>                    </div>                    <div class="btn-group top-buffer">                      <button class="btn btn-default" ng-click="showSearch = !showSearch">                        <i class="fa fa-search"></i> {{showSearch ? 'Hide Tools' : 'Search Tools'}}                      </button>                    </div>                </div>            </div>            <div class="portlet-body">              <div class="row text-center" ng-show="requesting">                  <div class="col-md-12">                    <div class="loading-message"><div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>                  </div>              </div>              <div class="row">                <div class="col-md-12">                  <div ng-show="!requesting">                    <div ng-show="apps.length === 0" class="text-center">                      <div class="row text-center">                        <div class="col-md-12">                            No apps found                        </div>                      </div>                    </div>                    <div ng-show="apps.length > 0">                        <table class="table table-striped table-bordered table-hover management" width="100%" id="datatable_collection">                            <thead>                                <tr role="row" class="heading">                                    <th width="15%">                                      <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">                                        ID                                        <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <th width="10%" class="hidden-xs">                                      <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">                                        Name                                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <th width="10%" class="hidden-xs hidden-sm hidden-md">                                      <a href="#" ng-click="sortType = 'version'; sortReverse = !sortReverse">                                        Version                                        <span ng-show="sortType == 'version' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'version' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <th width="15%" class="hidden-xs">                                      <a href="#" ng-click="sortType = 'label'; sortReverse = !sortReverse">                                        Label                                        <span ng-show="sortType == 'label' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'label' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <th width="20%" class="hidden-xs">                                      <a href="#" ng-click="sortType = 'shortDescription'; sortReverse = !sortReverse">                                        Short Description                                        <span ng-show="sortType == 'shortDescription' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'shortDescription' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <th width="13%" class="hidden-xs">                                      <a href="#" ng-click="sortType = 'executionSystem'; sortReverse = !sortReverse">                                        Exec. System                                        <span ng-show="sortType == 'executionSystem' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'executionSystem' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <th width="7%" class="hidden-xs hidden-sm hidden-md">                                      <a href="#" ng-click="sortType = 'public'; sortReverse = !sortReverse">                                        Public                                        <span ng-show="sortType == 'public' && !sortReverse" class="fa fa-caret-down"></span>                                        <span ng-show="sortType == 'public' && sortReverse" class="fa fa-caret-up"></span>                                      </a>                                    </th>                                    <!--<th width="5%" class="hidden-xs hidden-sm hidden-md">-->                                      <!--<a href="#" ng-click="sortType = 'revision'; sortReverse = !sortReverse">-->                                        <!--Revision-->                                        <!--<span ng-show="sortType == 'revision' && !sortReverse" class="fa fa-caret-down"></span>-->                                        <!--<span ng-show="sortType == 'revision' && sortReverse" class="fa fa-caret-up"></span>-->                                      <!--</a>-->                                    <!--</th>-->                                    <!--<th width="10%" class="hidden-xs">-->                                      <!--<a href="#" ng-click="sortType = 'lastModified'; sortReverse = !sortReverse">-->                                        <!--Last Modified-->                                        <!--<span ng-show="sortType == 'lastModified' && !sortReverse" class="fa fa-caret-down"></span>-->                                        <!--<span ng-show="sortType == 'lastModified' && sortReverse" class="fa fa-caret-up"></span>-->                                      <!--</a>-->                                    <!--</th>-->                                    <th width="10%" class="text-center"> Actions</th>                                </tr>                            </thead>                            <tbody>                                <!-- <tr dir-paginate="app in apps | orderBy:sortType:sortReverse | itemsPerPage: limit" total-items="totalItems"> -->                                <tr ng-repeat="app in apps | orderBy:sortType:sortReverse | filter:filter">                                    <td>                                        <a ui-sref="apps({appId: app.id})"> {{app.id}} </a>                                    </td>                                    <td class="hidden-xs">                                        <a ui-sref="apps({appId: app.id})"> {{app.name}} </a>                                    </td>                                    <td class="hidden-xs hidden-sm hidden-md">                                        {{app.version}}                                    </td>                                    <td class="hidden-xs">                                        {{app.label}}                                    </td>                                    <td class="hidden-xs">                                        {{app.shortDescription}}                                    </td>                                    <td class="hidden-xs">                                        <a href="#/systems/{{app.executionSystem}}">{{app.executionSystem}}</a>                                    </td>                                    <td class="hidden-xs hidden-sm hidden-md">                                        {{app.isPublic}}                                    </td>                                    <!--<td class="hidden-xs hidden-sm hidden-md">-->                                        <!--{{app.revision}}-->                                    <!--</td>-->                                    <!--<td class="hidden-xs">-->                                        <!--<span title="{{app.lastModified}}" am-time-ago="app.lastModified" class="date"></span>-->                                    <!--</td>-->                                    <td class="text-center">                                        <div class="btn-group">                                            <a class="btn red btn-outline" href="#" data-toggle="dropdown">                                                Actions                                                <i class="fa fa-angle-down"></i>                                            </a>                                            <ul class="dropdown-menu pull-right">                                                <li>                                                    <a ui-sref="apps.run({appId: app.id})" role="button"> <i class="fa fa-play"></i> Run </a>                                                </li>                                                <li>                                                    <a ng-click="edit('apps', app)" role="button"> <i class="fa fa-pencil"></i></i> Edit </a>                                                </li>                                                <li ng-if="!app.available">                                                    <a ng-click="confirmAction('apps', app, 'enable', apps, $index)"> <i class="fa fa-check"></i> Enable </a>                                                </li>                                                <li ng-if="app.available">                                                    <a ng-click="confirmAction('apps', app, 'disable', apps, $index)"> <i class="fa fa-remove"></i> Disable </a>                                                </li>                                                <li>                                                    <a ng-click="confirmAction('apps', app, 'delete', apps, $index)"> <i class="fa fa-trash-o"></i> Delete </a>                                                </li>                                                <li class="divider"> </li>                                                <li>                                                    <a ng-click="editPermissions(app, 'apps')" role="button"> <i class="fa fa-share"></i> Share </a>                                                </li>                                                <li>                                                    <a ng-click="getNotifications('app', app)" > <i class="fa fa-bell"></i> Notifications</a>                                                </li>                                                <li>                                                    <a ng-click="clone('apps', app, 'clone', apps, $index)"> <i class="fa fa-clone"></i> Clone </a>                                                </li>                                                <li class="divider" ng-if="!app.isPublic"> </li>                                                <li ng-if="!app.isPublic">                                                    <a ng-click="confirmAction('apps', app, 'publish', apps, $index)"> <i class="fa fa-eye"></i> Publish </a>                                                </li>                                            </ul>                                        </div>                                    </td>                                </tr>                            </tbody>                        </table>                    </div>                  </div>                </div>              </div>            </div>        </div>    </div></div>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#/apps">Workflows</a>
+        </li>
+    </ul>
+    <div landing-start-menu></div>
+</div>
+<h3 class="page-title"> Analysis Application Workflows
+</h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light portlet-fit portlet-datatable bordered">
+            <div class="portlet-title" ng-show="!requesting">
+                <div ng-controller="QueryBuilderCtrl" class="text-center top-buffer" ng-keyup="$event.keyCode == 13 ? searchTools(query) : null">
+                    <div class="btn-group">
+                      <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-filter" aria-hidden="true"></i></div>
+                        <input type="text" class="form-control" placeholder="Filter" ng-model="$parent.filter">
+                      </div>
+                    </div>
+                    <div class="row top-buffer" ng-show="showSearch">
+                      <query-builder group="filter.group" resource="apps"></query-builder>
+                      <div class="col-md-12 top-buffer">
+
+                        <div class="input-group">
+                          <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                          <input type="text" class="form-control" placeholder="Search" ng-model="query">
+                        </div>
+
+                        <div class="btn-group">
+                          <button class="btn btn-success top-buffer" ng-click="searchTools(query)">Search</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="btn-group top-buffer">
+                      <button class="btn btn-default" ng-click="showSearch = !showSearch">
+                        <i class="fa fa-search"></i> {{showSearch ? 'Hide Tools' : 'Search Tools'}}
+                      </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+              <div class="row text-center" ng-show="requesting">
+                  <div class="col-md-12">
+                    <div class="loading-message"><div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div ng-show="!requesting">
+                    <div ng-show="apps.length === 0" class="text-center">
+                      <div class="row text-center">
+                        <div class="col-md-12">
+                            No apps found
+                        </div>
+                      </div>
+                    </div>
+                    <div ng-show="apps.length > 0">
+                        <table class="table table-striped table-bordered table-hover management" width="100%" id="datatable_collection">
+                            <thead>
+                                <tr role="row" class="heading">
+
+                                    <th width="10%" class="hidden-xs">
+                                      <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                                        Name
+                                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                                      </a>
+                                    </th>
+                                    <th width="10%" class="hidden-xs hidden-sm hidden-md">
+                                      <a href="#" ng-click="sortType = 'version'; sortReverse = !sortReverse">
+                                        Version
+                                        <span ng-show="sortType == 'version' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'version' && sortReverse" class="fa fa-caret-up"></span>
+                                      </a>
+                                    </th>
+                                    <th width="15%" class="hidden-xs">
+                                      <a href="#" ng-click="sortType = 'label'; sortReverse = !sortReverse">
+                                        Label
+                                        <span ng-show="sortType == 'label' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'label' && sortReverse" class="fa fa-caret-up"></span>
+                                      </a>
+                                    </th>
+                                    <th width="20%" class="hidden-xs">
+                                      <a href="#" ng-click="sortType = 'shortDescription'; sortReverse = !sortReverse">
+                                        Short Description
+                                        <span ng-show="sortType == 'shortDescription' && !sortReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortType == 'shortDescription' && sortReverse" class="fa fa-caret-up"></span>
+                                      </a>
+                                    </th>
+              
+                                    <!--<th width="5%" class="hidden-xs hidden-sm hidden-md">-->
+                                      <!--<a href="#" ng-click="sortType = 'revision'; sortReverse = !sortReverse">-->
+                                        <!--Revision-->
+                                        <!--<span ng-show="sortType == 'revision' && !sortReverse" class="fa fa-caret-down"></span>-->
+                                        <!--<span ng-show="sortType == 'revision' && sortReverse" class="fa fa-caret-up"></span>-->
+                                      <!--</a>-->
+                                    <!--</th>-->
+                                    <!--<th width="10%" class="hidden-xs">-->
+                                      <!--<a href="#" ng-click="sortType = 'lastModified'; sortReverse = !sortReverse">-->
+                                        <!--Last Modified-->
+                                        <!--<span ng-show="sortType == 'lastModified' && !sortReverse" class="fa fa-caret-down"></span>-->
+                                        <!--<span ng-show="sortType == 'lastModified' && sortReverse" class="fa fa-caret-up"></span>-->
+                                      <!--</a>-->
+                                    <!--</th>-->
+                                    <th width="10%" class="text-center"> Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr dir-paginate="app in apps | orderBy:sortType:sortReverse | itemsPerPage: limit" total-items="totalItems"> -->
+                                <tr ng-repeat="app in apps | orderBy:sortType:sortReverse | filter:filter">
+
+                                    <td class="hidden-xs">
+                                        <a ui-sref="apps({appId: app.id})"> {{app.name}} </a>
+                                    </td>
+                                    <td class="hidden-xs hidden-sm hidden-md">
+                                        {{app.version}}
+                                    </td>
+                                    <td class="hidden-xs">
+                                        {{app.label}}
+                                    </td>
+                                    <td class="hidden-xs">
+                                        {{app.shortDescription}}
+                                    </td>
+
+                                    <!--<td class="hidden-xs hidden-sm hidden-md">-->
+                                        <!--{{app.revision}}-->
+                                    <!--</td>-->
+                                    <!--<td class="hidden-xs">-->
+                                        <!--<span title="{{app.lastModified}}" am-time-ago="app.lastModified" class="date"></span>-->
+                                    <!--</td>-->
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                          <a ui-sref="apps.run({appId: app.id})" role="button"> <i class="fa fa-play"></i> Run </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
