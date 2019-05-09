@@ -146,21 +146,12 @@
                            role="button"> <i class="fa fa-stop"></i> Stop</a>
                     </li>
                     <li ng-if="job.status | jobStatusIsActive" class="divider"></li>
-                    <li>
-                        <a ng-click="confirmAction('jobs', job, 'resubmit', jobs, 0)" role="button"> <i
-                                class="fa fa-refresh"></i> Resubmit</a>
-                    </li>
+                    
                     <li>
                         <a ui-sref="data-explorer({systemId: job.archiveSystem, path: job.archivePath})" role="button">
                             <i class="fa fa-folder-open-o"></i> Browse </a>
                     </li>
-                    <li>
-                        <a ng-click="confirmAction('jobs', job, 'delete')" role="button"> <i class="fa fa-trash-o"></i>
-                            Delete</a>
-                    </li>
-                    <li>
-                        <a ng-click="editPermissions(job, 'jobs')"> <i class="fa fa-share-alt"></i> Share </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

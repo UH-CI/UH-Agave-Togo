@@ -141,31 +141,7 @@
               <li>
                   <a ui-sref="apps.run({appId: app.id})" role="button"> <i class="fa fa-play"></i> Run </a>
               </li>
-              <li>
-                  <a ng-click="edit('apps', app)" role="button"> <i class="fa fa-pencil"></i> Edit </a>
-              </li>
-              <li ng-if="!app.available">
-                  <a ng-click="confirmAction('apps', app, 'enable')"> <i class="fa fa-check"></i> Enable </a>
-              </li>
-              <li ng-if="app.available">
-                  <a ng-click="confirmAction('apps', app, 'disable')"> <i class="fa fa-remove"></i> Disable </a>
-              </li>
-              <li>
-                  <a ng-click="confirmAction('apps', app, 'delete')"> <i class="fa fa-trash-o"></i> Delete </a>
-              </li>
-              <li class="divider"> </li>
-              <li>
-                  <a ng-click="confirmAction('apps', app, 'publish')" role="button"> <i class="fa fa-eye"></i> Publish </a>
-              </li>
-              <li>
-                  <a ng-click="getNotifications('app', app)" > <i class="fa fa-bell"></i> Notifications</a>
-              </li>
-              <li>
-                  <a ng-click="clone('apps', app, 'clone', [app], 0)"> <i class="fa fa-clone"></i> Clone </a>
-              </li>
-              <li>
-                  <a ng-click="editPermissions(app, 'apps')"> <i class="fa fa-share-alt"></i> Share </a>
-              </li>
+              
           </ul>
       </div>
     </div>
