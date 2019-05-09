@@ -65,19 +65,19 @@
            </tr>
            <tr ng-if="app.defaultQueue">
              <td>Default Queue</td>
-             <td><a href="#/systems/{{app.executionSystem}}/queues">{{app.defaultQueue}}</a></td>
+             <td>{{app.defaultQueue}}</td>
            </tr>
            <tr ng-if="app.deploymentSystem">
              <td>Deployment System</td>
-             <td><a href="#/systems/{{app.deploymentSystem}}">{{app.deploymentSystem}}</a></td>
+             <td>{{app.deploymentSystem}}</td>
            </tr>
            <tr ng-if="app.deploymentPath">
              <td>Deployment Path</td>
-             <td><a href="#/data/explorer/{{app.deploymentSystem}}//{{app.deploymentPath}}">{{app.deploymentPath}}</a></td>
+             <td>{{app.deploymentPath}}</td>
            </tr>
            <tr ng-if="app.executionSystem">
              <td>Execution System</td>
-             <td><a href="#/systems/{{app.executionSystem}}">{{app.executionSystem}}</a></td>
+             <td>{{app.executionSystem}}</td>
            </tr>
            <tr ng-if="app.executionType">
              <td>Execution Type</td>

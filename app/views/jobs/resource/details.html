@@ -42,7 +42,7 @@
                     </tr>
                     <tr ng-if="job.executionSystem">
                         <td>Execution System</td>
-                        <td><a href="#/systems/{{job.executionSystem}}">{{job.executionSystem}}</a></td>
+                        <td>{{job.executionSystem}}</td>
                     </tr>
                     <tr ng-if="job.archive">
                         <td>Archive</td>
@@ -50,7 +50,7 @@
                     </tr>
                     <tr ng-if="job.archiveSystem">
                         <td>Archive System</td>
-                        <td><a href="#/systems/{{job.archiveSystem}}">{{job.archiveSystem}}</a></td>
+                        <td>{{job.archiveSystem}}</td>
                     </tr>
                     <tr ng-if="job.archivePath">
                         <td>Archive Path</td>
@@ -68,7 +68,7 @@
                     </tr>
                     <tr ng-if="job.batchQueue">
                         <td>Batch Queue</td>
-                        <td><a ui-sref="systems.details({id:job.executionSystem})">{{job.batchQueue}}</td>
+                        <td></td>
                     </tr>
                     <tr ng-if="job.appId">
                         <td>Application ID</td>

@@ -74,15 +74,6 @@
                                        id="datatable_collection">
                                     <thead>
                                     <tr role="row" class="heading">
-                                        <th width="20%">
-                                            <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
-                                                ID
-                                                <span ng-show="sortType == 'id' && !sortReverse"
-                                                      class="fa fa-caret-down"></span>
-                                                <span ng-show="sortType == 'id' && sortReverse"
-                                                      class="fa fa-caret-up"></span>
-                                            </a>
-                                        </th>
                                         <th width="9%" class="hidden-xs hidden-sm hidden-md">
                                             <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
                                                 Name
@@ -92,16 +83,7 @@
                                                       class="fa fa-caret-up"></span>
                                             </a>
                                         </th>
-                                        <th width="9%" class="hidden-xs hidden-sm hidden-md">
-                                            <a href="#"
-                                               ng-click="sortType = 'executionSystem'; sortReverse = !sortReverse">
-                                                Execution System
-                                                <span ng-show="sortType == 'executionSystem' && !sortReverse"
-                                                      class="fa fa-caret-down"></span>
-                                                <span ng-show="sortType == 'executionSystem' && sortReverse"
-                                                      class="fa fa-caret-up"></span>
-                                            </a>
-                                        </th>
+                                        
                                         <th width="10%" class="hidden-xs hidden-sm hidden-md">
                                             <a href="#" ng-click="sortType = 'appId'; sortReverse = !sortReverse">
                                                 Application
@@ -152,14 +134,8 @@
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="job in jobs | orderBy:sortType:sortReverse | filter:filter">
-                                        <td>
-                                            <a ui-sref="jobs({id: job.id})"> {{job.id}} </a>
-                                        </td>
                                         <td class="hidden-xs hidden-sm hidden-md">
                                             <a ui-sref="jobs({id: job.id})"> {{job.name}} </a>
-                                        </td>
-                                        <td class="hidden-xs hidden-sm hidden-md">
-                                            <a href="#/systems/{{job.executionSystem}}">{{job.executionSystem}}</a>
                                         </td>
                                         <td class="hidden-xs hidden-sm hidden-md">
                                             <a ui-sref="apps({appId: job.appId})"> {{job.appId}}</a>
@@ -188,21 +164,13 @@
                                                            role="button"> <i class="fa fa-stop"></i> Stop</a>
                                                     </li>
                                                     <li ng-if="job.status | jobStatusIsActive" class="divider"> </li>
-                                                    <li>
+                                                   <!-- <li>
                                                         <a ng-click="confirmAction('jobs', job, 'resubmit', jobs, $index)" role="button"> <i
                                                                 class="fa fa-refresh"></i> Resubmit</a>
-                                                    </li>
+                                                    </li>-->
                                                     <li>
                                                         <a ng-click="browse(job.id)" role="button"> <i
-                                                                class="fa fa-folder-open-o"></i> Browse</a>
-                                                    </li>
-                                                    <li>
-                                                        <a ng-click="confirmAction('jobs', job, 'delete', jobs, $index)"
-                                                           role="button"> <i class="fa fa-trash-o"></i> Delete</a>
-                                                    </li>
-                                                    <li>
-                                                        <a ng-click="editPermissions(job, 'jobs')"> <i
-                                                                class="fa fa-share-alt"></i> Share </a>
+                                                                class="fa fa-folder-open-o"></i> Browse Output</a>
                                                     </li>
                                                 </ul>
                                             </div>
