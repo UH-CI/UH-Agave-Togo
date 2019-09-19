@@ -274,6 +274,15 @@ angular.module('AgaveToGo').controller('AppsResourceRunController', function ($s
       minimum: 1,
       default: app.defaultNodeCount || $scope.defaultBatchQueue.maxNodes || 1
     };
+    schema.properties.memoryPerNode = {
+      title: 'Memory In GB',
+      description: 'The amount of memory needed for this job',
+      type: 'string',
+      required: true,
+      maximum: $scope.defaultBatchQueue.maxMemoryPerNode,
+      minimum: 1,
+      default: app.defaultMemoryPerNode || $scope.defaultBatchQueue.maxMemoryPerNode || 1
+    };
 
     schema.properties.processorsPerNode = {
       title: 'Processors Per Node',
@@ -622,6 +631,7 @@ angular.module('AgaveToGo').controller('AppsResourceRunController', function ($s
               },
               'nodeCount',
               'processorsPerNode',
+              'memoryPerNode',
               'archive',
               {
                 key: 'archiveSystem',
@@ -707,8 +717,8 @@ angular.module('AgaveToGo').controller('AppsResourceRunController', function ($s
 
       // add whatever notifications the user has set in their config to the job request.
       // this saves a few api calls after job creation.
-      jobData.notifications = NotificationSubscriptionTemplateService.getDefaultSubscriptions();
-
+      //jobData.notifications = NotificationSubscriptionTemplateService.getDefaultSubscriptions();
+      jobData.notifications =[{"url":$localStorage.activeProfile.email,  "event":"*"}]
       $scope.requesting = true;
 
       JobsController.createSubmitJob(jobData).then(
