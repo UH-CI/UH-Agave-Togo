@@ -159,7 +159,7 @@
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
                                                 <ul class="dropdown-menu pull-right">
-                                                    <li ng-show="job.status === 'RUNNING'">
+                                                    <li ng-show="job.status === 'RUNNING' || job.status=== 'QUEUED'">
                                                         <a ng-click="confirmAction('jobs', job, 'stop', jobs, $index)"
                                                            role="button"> <i class="fa fa-stop"></i> Stop</a>
                                                     </li>
