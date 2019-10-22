@@ -718,7 +718,7 @@ angular.module('AgaveToGo').controller('AppsResourceRunController', function ($s
       // add whatever notifications the user has set in their config to the job request.
       // this saves a few api calls after job creation.
       //jobData.notifications = NotificationSubscriptionTemplateService.getDefaultSubscriptions();
-      jobData.notifications =[{"url":$localStorage.activeProfile.email,  "event":"*","persistent":true}]  
+      jobData.notifications =[{"url":$localStorage.activeProfile.email,  "event":"PENDING","persistent":true},{"url":$localStorage.activeProfile.email,  "event":"QUEUED","persistent":true},{"url":$localStorage.activeProfile.email,  "event":"RUNNING","persistent":true},{"url":$localStorage.activeProfile.email,  "event":"FAILED","persistent":true},{"url":$localStorage.activeProfile.email,  "event":"FINISHED","persistent":true}]  
       $scope.requesting = true;
 
       JobsController.createSubmitJob(jobData).then(

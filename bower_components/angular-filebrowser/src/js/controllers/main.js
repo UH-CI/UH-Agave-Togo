@@ -8,7 +8,7 @@
         $scope.modes = ['Javascript', 'Shell', 'XML', 'Markdown', 'CLike', 'Python'];
         $scope.cmMode = '';
         $scope.preserveDirectoryStructure = false;
-        
+
         $scope.cmOptions = {
             lineWrapping: true,
             lineNumbers: true,
@@ -315,7 +315,7 @@
         };
 
         $scope.selectItem = function(item){
-          $rootScope.uploadFileContent = 'agave://' + item.model.system.id + item.model.fullPath();
+          $rootScope.uploadFileContent = 'agave://' + item.model.system.id + '/'+ item.model.fullPath();
         };
 
         $scope.changeLanguage($scope.getQueryParam('lang'));
