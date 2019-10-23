@@ -169,8 +169,10 @@
                                                                 class="fa fa-refresh"></i> Resubmit</a>
                                                     </li>-->
                                                     <li>
-                                                        <a ng-click="browse(job.id)" role="button"> <i
-                                                                class="fa fa-folder-open-o"></i> Browse Output</a>
+                                                      <a href="#/data/explorer{{job._links.archiveData.href.split('system')[1]}}" role="button">
+                                                          <i class="fa fa-folder-open-o"></i> Browse Output
+                                                      </a>
+
                                                     </li>
                                                     <li>
                                                         <a ng-click="confirmAction('jobs', job, 'delete', jobs, $index)"
