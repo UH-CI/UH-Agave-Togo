@@ -148,8 +148,9 @@
                     <li ng-if="job.status | jobStatusIsActive" class="divider"></li>
 
                     <li>
-                        <a ui-sref="data-explorer({systemId: job.archiveSystem, path: job.archivePath})" role="button">
-                            <i class="fa fa-folder-open-o"></i> Browse </a>
+                        <a href="#/data/explorer/{{job.archiveSystem}}/{{job.archivePath}}" role="button">
+                            <i class="fa fa-folder-open-o"></i> Browse
+                        </a>
                     </li>
                     <li>
                         <a ng-click="confirmAction('jobs', job, 'delete', jobs, $index)"
