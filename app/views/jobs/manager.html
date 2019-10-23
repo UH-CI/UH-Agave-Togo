@@ -172,6 +172,10 @@
                                                         <a ng-click="browse(job.id)" role="button"> <i
                                                                 class="fa fa-folder-open-o"></i> Browse Output</a>
                                                     </li>
+                                                    <li>
+                                                        <a ng-click="confirmAction('jobs', job, 'delete', jobs, $index)"
+                                                           role="button"> <i class="fa fa-trash-o"></i> Delete</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>

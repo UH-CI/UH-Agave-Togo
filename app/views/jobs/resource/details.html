@@ -141,17 +141,20 @@
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu pull-right">
-                    <li ng-show="job.status | jobStatusIsActive">
+                    <li ng-show="job.status==='RUNNING' || job.status==='QUEUED'">
                         <a ng-click="confirmAction('jobs', job, 'refresh', jobs, 0)"
                            role="button"> <i class="fa fa-stop"></i> Stop</a>
                     </li>
                     <li ng-if="job.status | jobStatusIsActive" class="divider"></li>
-                    
+
                     <li>
                         <a ui-sref="data-explorer({systemId: job.archiveSystem, path: job.archivePath})" role="button">
                             <i class="fa fa-folder-open-o"></i> Browse </a>
                     </li>
-                    
+                    <li>
+                        <a ng-click="confirmAction('jobs', job, 'delete', jobs, $index)"
+                           role="button"> <i class="fa fa-trash-o"></i> Delete</a>
+                    </li>
                 </ul>
             </div>
         </div>
