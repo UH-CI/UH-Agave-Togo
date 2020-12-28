@@ -53,7 +53,7 @@ angular.module('AgaveAuth').controller('LoginController', function ($injector, $
                     d = new Date();
                     $localStorage.token.expires_at = moment(d).add($localStorage.token.expires_in, 's').toDate();
                     $localStorage.tenant = {"id":"0001411570998814-b0b0b0bb0b-0001-017","name":"University of Hawaii Tenant","baseUrl":"https://uhhpctenant.its.hawaii.edu/","code":"hawaii","contact":[{"name":"Sean Cleveland","email":"seanbc@uhawaii.edu","url":"","type":"admin","primary":true}],"_links":{"self":{"href":"https://docker.example.com/tenants/v2/hawaii"},"publickey":{"href":"https://uhhpctenant.its.hawaii.edu/apim/v2/publickey"}}};
-                    $localStorage.activeProfile = {"first_name":"","last_name":"","full_name":"","email":"","phone":"","mobile_phone":"","status":"","create_time":"","uid":0,"username": $scope.username}
+                    $localStorage.activeProfile = {"first_name":"","last_name":"","full_name":"","email":$scope.username+"@hawaii.edu","phone":"","mobile_phone":"","status":"","create_time":"","uid":0,"username": $scope.username}
                     //$location.path("/app");
                     $window.location.href = '/app';
                 }
