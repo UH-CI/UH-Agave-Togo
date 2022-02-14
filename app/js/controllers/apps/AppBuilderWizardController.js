@@ -1577,7 +1577,7 @@ angular.module('AgaveToGo').controller('AppBuilderWizardController', function ($
        "executionSystem": "",
        "executionType": "CLI",
        "parallelism": "SERIAL",
-       "deploymentPath": $localStorage.activeProfile.username + "/apps/shell-runner-0.1.0",
+       "deploymentPath": "/apps/shell-runner-0.1.0",
        "deploymentSystem": "storage.example.com",
        "templatePath": "wrapper.sh",
        "testPath": "test/test.sh",
