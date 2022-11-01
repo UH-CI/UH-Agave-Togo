@@ -6,7 +6,7 @@
   "license": "BSD-2-Clause",
   "repository": "https://github.com/agaveapi/agave-togo",
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.2",
     "gulp-connect": "5.0.0",
     "gulp-ignore": "^2.0.1",
     "gulp-imagemin": "^2.4.0",
